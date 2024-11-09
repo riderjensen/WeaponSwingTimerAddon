@@ -24,7 +24,10 @@ addon_data.config.InitializeVisuals = function()
 
     panel.name = "WeaponSwingTimer"
     panel.default = addon_data.config.OnDefault
-    InterfaceOptions_AddCategory(panel)
+    category = Settings.RegisterCanvasLayoutCategory(panel, panel.name, panel.name);
+    category.ID = panel.name
+    Settings.RegisterAddOnCategory(category);
+    -- InterfaceOptions_AddCategory(panel) -- currently broken by Blizzard
     
     -- Add the melee panel
     panel.config_melee_panel = CreateFrame("Frame", nil, panel)
@@ -38,7 +41,10 @@ addon_data.config.InitializeVisuals = function()
     panel.config_melee_panel.name = 'Melee Settings'
     panel.config_melee_panel.parent = panel.name
     panel.config_melee_panel.default = addon_data.config.OnDefault
-    InterfaceOptions_AddCategory(panel.config_melee_panel)
+    melee_category = Settings.RegisterCanvasLayoutCategory(panel.config_melee_panel, panel.config_melee_panel.name, panel.config_melee_panel.name);
+    melee_category.ID = panel.config_melee_panel.name
+    Settings.RegisterAddOnCategory(melee_category);
+    -- InterfaceOptions_AddCategory(panel.config_melee_panel)
     
     -- Add the hunter panel
     panel.config_hunter_panel = CreateFrame("Frame", nil, panel)
@@ -49,7 +55,10 @@ addon_data.config.InitializeVisuals = function()
     panel.config_hunter_panel.name = 'Hunter & Wand Settings'
     panel.config_hunter_panel.parent = panel.name
     panel.config_hunter_panel.default = addon_data.config.OnDefault
-    InterfaceOptions_AddCategory(panel.config_hunter_panel)
+    hunter_category = Settings.RegisterCanvasLayoutCategory(panel.config_hunter_panel, panel.config_hunter_panel.name, panel.config_hunter_panel.name);
+    hunter_category.ID = panel.config_hunter_panel.name
+    Settings.RegisterAddOnCategory(hunter_category);
+    -- InterfaceOptions_AddCategory(panel.config_hunter_panel)
     
 
 end
